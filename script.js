@@ -429,3 +429,5 @@ if ('serviceWorker' in navigator) {
         console.log('Service Worker support detected');
     });
 }
+
+
