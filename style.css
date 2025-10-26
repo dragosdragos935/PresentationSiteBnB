@@ -637,12 +637,12 @@ h1, h2, h3, h4, h5, h6 {
     resize: vertical;
     min-height: 120px;
 }
-
 /* Footer */
 .footer {
     background: var(--primary-color);
     color: var(--white);
-    padding: 60px 0 20px;
+    padding: 60px 20px 40px; /* mai mult padding jos */
+    box-sizing: border-box;
 }
 
 .footer-content {
@@ -665,6 +665,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-section ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer-section ul li {
@@ -713,6 +714,24 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.8);
+    margin-top: 20px;
+}
+
+/* ======== Responsive Footer ======== */
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 20px 30px; /* mai mult spațiu jos pe mobil */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* toate secțiunile pe rând */
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+        padding-top: 15px;
+    }
 }
 
 /* Animations */
