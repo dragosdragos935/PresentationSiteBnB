@@ -601,7 +601,11 @@
             </div>
           </div>
           <div class="contact-form">
-            <form id="contactForm">
+            <form
+              id="contactForm"
+              action="https://formspree.io/f/manlygpr"  
+              method="POST"
+            >
               <div class="form-group">
                 <input
                   type="text"
@@ -611,6 +615,7 @@
                   required
                 />
               </div>
+          
               <div class="form-group">
                 <input
                   type="email"
@@ -620,6 +625,7 @@
                   required
                 />
               </div>
+          
               <div class="form-group">
                 <input
                   type="tel"
@@ -628,22 +634,25 @@
                   placeholder="Numero di telefono"
                 />
               </div>
+          
               <div class="form-group">
                 <input
                   type="date"
                   id="checkin"
                   name="checkin"
-                  placeholder="Data check-in"
+                  placeholder="Check-in"
                 />
               </div>
+          
               <div class="form-group">
                 <input
                   type="date"
                   id="checkout"
                   name="checkout"
-                  placeholder="Data check-out"
+                  placeholder="Check-out"
                 />
               </div>
+          
               <div class="form-group">
                 <textarea
                   id="message"
@@ -653,14 +662,42 @@
                   required
                 ></textarea>
               </div>
+          
               <button type="submit" class="btn btn-primary">
                 Invia Messaggio
               </button>
             </form>
+          
+            <p id="formStatus" style="margin-top: 10px; color: green;"></p>
           </div>
-        </div>
-      </div>
-    </section>
+          
+          <script>
+            const form = document.getElementById("contactForm");
+            const status = document.getElementById("formStatus");
+          
+            form.addEventListener("submit", async (e) => {
+              e.preventDefault();
+              const data = new FormData(form);
+          
+              try {
+                const response = await fetch(form.action, {
+                  method: form.method,
+                  body: data,
+                  headers: { Accept: "application/json" },
+                });
+          
+                if (response.ok) {
+                  status.textContent = "✅ Messaggio inviato con successo!";
+                  form.reset();
+                } else {
+                  status.textContent = "❌ Errore durante l'invio. Riprova.";
+                }
+              } catch (error) {
+                status.textContent = "⚠️ Si è verificato un problema di rete.";
+              }
+            });
+          </script>
+          
 
     <!-- Footer -->
     <footer class="footer">
